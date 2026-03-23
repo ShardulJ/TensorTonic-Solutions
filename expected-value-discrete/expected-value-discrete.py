@@ -4,10 +4,6 @@ def expected_value_discrete(x, p):
     """
     Returns: float expected value
     """
-    e = 0
-    if np.sum(p) == 1:
-        for a, b in zip(x, p):
-            e += a*b
-        return e
-    else:
+    if not np.isclose(np.sum(p), 1.0):
         raise ValueError
+    return np.dot(x, p)
